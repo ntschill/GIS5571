@@ -1,2 +1,20 @@
-#Buffer in Jupyter Notebooks for ArcGIS Pro
+#Buffer in Jupyter Notebooks for ArcGIS Pro (ArcPy)
+
 arcpy.analysis.Buffer(in_fratures=("road_centerlines"), out_feature_class=("buffered_road_centerlines"), buffer_distance_or_field="50 Feet", line_side="FULL", line_end_type="ROUND", dissolve_field="", method="PLANAR")
+
+#Buffer in Jupyter Notebooks for ArcGIS Online
+
+from arcgis.gis import GIS
+gis = GIS("home")
+item = gis.content.get("adf4b5b9f3784c5297f944aae6483bfd")
+road_centerlines = item
+from arcgis import features
+buffered_road_centerlines = features.use_proximity.create_buffers(
+    input_layer=road_centerlines,
+    distances=["50"],  
+    units="Feet", 
+    dissolve_type="None",       
+    side_type="Full",      
+    end_type="Round",      
+    output_name="buffered_road_centerlines"  
+)

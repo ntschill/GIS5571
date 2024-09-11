@@ -2,6 +2,7 @@
 
 arcpy.analysis.Buffer(in_fratures=("road_centerlines"), out_feature_class=("buffered_road_centerlines"), buffer_distance_or_field="50 Feet", line_side="FULL", line_end_type="ROUND", dissolve_field="", method="PLANAR")
 
+
 #Buffer in Jupyter Notebooks for ArcGIS Online
 
 from arcgis.gis import GIS
